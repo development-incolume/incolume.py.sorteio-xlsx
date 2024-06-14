@@ -78,6 +78,7 @@ tox = "*"
 pydocstyle = "^6.3.0"
 taskipy = "^1.11.0"
 ruff = "^0.0.287"
+incolume-py-changelog = "^0.8.0"
 
 [build-system]
 requires = ["poetry-core"]
