@@ -1,4 +1,4 @@
-# incolume.py.model-2023-07-05
+# incolume.py.sorteio-xlsx
 
 ---
 Este projeto serve como esqueleto para estrutura de outros projetos python
