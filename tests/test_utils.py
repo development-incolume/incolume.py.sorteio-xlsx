@@ -1,7 +1,7 @@
 """Test utils module."""
 import pytest
 
-from incolume.py.model_2023_07_05 import utils
+from incolume.py.sorteio_xlsx import utils
 
 __author__ = '@britodfbr'  # pragma: no cover
 

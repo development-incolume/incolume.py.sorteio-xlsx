@@ -4,7 +4,7 @@ import re
 
 import pytest
 
-from incolume.py.model_2023_07_05 import __version__
+from incolume.py.sorteio_xlsx import __version__
 
 
 @pytest.mark.fast()
