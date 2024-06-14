@@ -2,7 +2,7 @@
 
 import pytest
 
-from incolume.py.sorteio_xlsx.skell import Skell, skell
+from incolume.py.sorteio_xlsx.utils.skell import Skell, skell
 
 __author__ = '@britodfbr'
 
