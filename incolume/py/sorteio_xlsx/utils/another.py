@@ -1,6 +1,5 @@
 """Another module."""
 
-
 __author__ = '@britodfbr'  # pragma: no cover
 
 import dataclasses

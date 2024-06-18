@@ -2,12 +2,12 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 __author__ = '@britodfbr'  # pragma: no cover
 
 from collections import namedtuple
+from typing import NamedTuple
 
-TypeColor = namedtuple('TypeColor', 'none red green blue yellow')
+TypeColor: NamedTuple = namedtuple('TypeColor', 'none red green blue yellow')  # noqa: PYI024
 
 color = TypeColor(
     none='\033[0m',

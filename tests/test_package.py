@@ -1,8 +1,6 @@
 """Module test for principal package."""
 
-
 import pytest
-
 from incolume.py.sorteio_xlsx import (
     __version__,
     configfile,
@@ -19,10 +17,10 @@ class TestCase:
 
     @pytest.mark.parametrize(
         'entrance',
-        (
+        [
             configfile,
             versionfile,
-        ),
+        ],
     )
     def test_exists(self, entrance):
         """Test if exists files."""
@@ -30,10 +28,10 @@ class TestCase:
 
     @pytest.mark.parametrize(
         'entrance',
-        (
+        [
             configfile,
             versionfile,
-        ),
+        ],
     )
     def test_is_file(self, entrance):
         """Test if are files."""
@@ -41,10 +39,10 @@ class TestCase:
 
     @pytest.mark.parametrize(
         'entrance',
-        (
+        [
             configfile,
             versionfile,
-        ),
+        ],
     )
     def test_same_version(self, entrance):
         """Test same version."""
