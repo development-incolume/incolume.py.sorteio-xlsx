@@ -76,6 +76,7 @@ ruff = "^0.4.9"
 incolume-py-changelog = "^0.8.0"
 faker = "^25.8.0"
 pre-commit = "^3.7.1"
+poetry = "^1.8.3"
 
 [build-system]
 requires = ["poetry-core"]
@@ -339,7 +340,7 @@ docstring-code-line-length = "dynamic"
 #"path/to/file.py" = ["E402"]
 #"**/{tests,docs,tools}/*" = ["E402"]
 "**/{tests,docs,tools,utils}/*" = ["EXE002"]
-"**/*_tests.py" = [
+"**/*_test.py" = [
   "ANN001",
   "ANN101",
   "EXE002",
