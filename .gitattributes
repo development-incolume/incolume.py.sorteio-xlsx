@@ -1,0 +1,28 @@
+# https://help.github.com/pt/github/using-git/configuring-git-to-handle-line-endings
+# https://stackoverflow.com/a/20653073
+
+# Defina o comportamento padrão, caso as pessoas não tenham configurado o core.autocrlf.
+# as opções podem ser: 
+# 1) true:             x -> LF -> CRLF
+# 2) input:            x -> LF -> LF
+# 3) false:            x -> x -> x
+# 4) auto:             unix-style -> lf | win-style -> crlf
+* text=auto
+
+# Declare explicitamente os arquivos de texto que você deseja que sempre sejam normalizados e convertidos 
+# em delimitadores de linha nativos ao fazer checkout.
+*.c text
+*.h text
+*.htm text working-tree-encoding=ISO-8859-1 eol=CRLF
+*.html text working-tree-encoding=ISO-8859-1 eol=CRLF
+
+# Declare os arquivos que sempre terão delimitadores de linha CRLF ao fazer checkout.
+*.sln text eol=crlf
+
+# Indique todos os arquivos que são verdadeiramente binários e que não devem ser modificados.
+*.png binary
+*.jpg binary
+*.git binary
+*.pdf binary
+*.xlsx binary
+*.docx binary

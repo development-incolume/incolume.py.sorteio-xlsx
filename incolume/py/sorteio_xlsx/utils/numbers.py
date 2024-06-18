@@ -1,4 +1,5 @@
 """Numbers module."""
+
 from typing import List
 
 

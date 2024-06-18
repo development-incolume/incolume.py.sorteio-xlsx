@@ -3,7 +3,6 @@
 import re
 
 import pytest
-
 from incolume.py.sorteio_xlsx import __version__
 
 
@@ -16,8 +15,8 @@ class TestSemVer:
         assert re.fullmatch(semver_regex, __version__, re.I)
 
     @pytest.mark.parametrize(
-        ('entrance', 'expected'),
-        (
+        ['entrance', 'expected'],
+        [
             (__version__, True),
             ('1', False),
             ('1.0', False),
@@ -47,7 +46,7 @@ class TestSemVer:
             ('1.1.1a0', True),
             ('1.1.1rc0', True),
             ('1.1.1rc1111', True),
-        ),
+        ],
     )
     def test_semantic_version(self, entrance, expected, semver_regex):
         """Test semantic version asserts."""
