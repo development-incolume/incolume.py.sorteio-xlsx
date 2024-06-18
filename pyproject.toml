@@ -71,7 +71,7 @@ mypy = "^1.4.1"
 mypy-extensions = "^1.0.0"
 tox = "*"
 taskipy = "^1.11.0"
-ruff = "^0.0.287"
+ruff = "^0.4.9"
 incolume-py-changelog = "^0.8.0"
 
 [build-system]
