@@ -74,6 +74,7 @@ tox = "^4.15.1"
 taskipy = "^1.11.0"
 ruff = "^0.4.9"
 incolume-py-changelog = "^0.8.0"
+faker = "^25.8.0"
 
 [build-system]
 requires = ["poetry-core"]
