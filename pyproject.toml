@@ -38,11 +38,11 @@ exclude = [
 
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05"
-"Documentation" = "https://incolume-treinamentos.github.io/incolume.py.model-2023-07-05/"
-"Source" = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05"
-"Git" = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05.git"
-"Tracker" = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05/-/issues"
+"Bug Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
+"Documentation" = "https://incolume-treinamentos.github.io/incolume.py.sorteio-xlsx/"
+"Source" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
+"Git" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx.git"
+"Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx/-/issues"
 
 
 [tool.poetry.dependencies]
