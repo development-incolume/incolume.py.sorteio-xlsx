@@ -60,6 +60,7 @@ mkdocs-material = "^9.1.18"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
+tox = "^4.15.1"
 
 
 [tool.poetry.group.secty.dependencies]
@@ -70,7 +71,6 @@ safety = "^2.3.5"
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
 mypy-extensions = "^1.0.0"
-tox = "^4.15.1"
 taskipy = "^1.11.0"
 ruff = "^0.4.9"
 incolume-py-changelog = "^0.8.0"
@@ -195,12 +195,12 @@ exclude_lines = [
 # required-version = "0.1.6"
 
 # Assume Python Version
-target-version = "py38"
+target-version = "py310"
 
 # Decrease the maximum line length to 79 character.
 line-length = 79
 
-namespace-packages = ["incolume/py/changelog"]
+namespace-packages = ["incolume.py.sorteio_xlsx"]
 
 # Allow imports relative to directories
 src = ["incolume/", "tests/"]
