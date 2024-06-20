@@ -9,35 +9,57 @@ from pathlib import Path
 import pandas as pd
 import pytz
 from faker import Faker
+from typing import Final
 
 
-def data_fake(*, seed: int | None = None, lang: str = '') -> tuple[str, ...]:
-    """Gen data fake for XLSX files."""
-    lang = lang or 'pt_BR'
-    fake = Faker(lang)
-    if seed:
-        fake.seed_instance(seed)
-
-    return (
-        (name := f'{fake.first_name()} {fake.last_name()} {fake.last_name()}'),
-        fake.cpf(),
-        f'{fake.slug(name)}@{fake.safe_domain_name()}',
-    )
+TZ: Final = pytz.timezone('America/Sao_Paulo')
 
 
-def generate_dataframe(count: int = 0) -> pd.DataFrame:
-    """Generate dataframe."""
-    count = count or 10
-    title = 'nome cpf email'.split()
-    users = (data_fake() for _ in range(count))
-    return pd.DataFrame(users, columns=title)
+class DataFake:
+    """Data Fake for this module."""
 
+    def __init__(
+        self,
+        *,
+        count: int = 0,
+        fileoutput: Path | None = None,
+        domain: str = '',
+        seed: int | None = None,
+        lang: str = '',
+    ):
+        """Init this class."""
+        self.fileoutput = (
+            fileoutput or Path(__file__).parent / 'empregados.xlsx'
+        )
+        self.count = count or 10
+        self.seed = seed
+        self.lang = lang or 'pt_BR'
+        self.fake = Faker(lang)
+        self.domain = domain
 
-def write_xlsx(data: pd.DataFrame, filename: Path | None = None) -> bool:
-    """Write xlsx file."""
-    filename = filename or Path(__file__).parent / 'empregados.xlsx'
-    data.to_excel(filename, index=False)
-    return filename.is_file()
+    def data_fake(self) -> tuple[str, ...]:
+        """Gen data fake for XLSX files."""
+        if self.seed:
+            self.fake.seed_instance(self.seed)
+        domain = self.domain or self.fake.safe_domain_name()
+        name = f'{self.fake.first_name()} {self.fake.last_name()} {self.fake.last_name()}'
+        cpf = self.fake.cpf()
+        email = f'{self.fake.slug(name)}@{domain}'
+        return name, cpf, email
+
+    def _generate_dataframe(self) -> pd.DataFrame:
+        """Generate dataframe."""
+        title = 'nome cpf email'.split()
+        users = (self.data_fake() for _ in range(self.count))
+        pd0 = pd.DataFrame(users, columns=title)
+        print(pd0)
+        return pd0
+
+    def write_xlsx(self) -> bool:
+        """Write xlsx file."""
+        data = self._generate_dataframe()
+        data.to_excel(self.fileoutput, index=False)
+        return self.fileoutput.is_file()
 
 
 def sorteio(k: int = 1, filename: Path | None = None) -> Path:
@@ -45,7 +67,7 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     filename = filename or Path(__file__).parent / 'empregados.xlsx'
     ext = {'.xlsx': pd.read_excel}
     fout: Path = filename.with_name(
-        f'{filename.stem}{dt.datetime.now(tz=pytz.timezone("America/Sao_Paulo")).isoformat()}.xlsx',
+        f'{filename.stem}{dt.datetime.now(tz=TZ).isoformat()}.xlsx',
     )
     df0 = ext.get(filename.suffix)(filename)
 
