@@ -20,29 +20,36 @@ class DataFake:
 
     def __init__(
         self,
-        *,
-        count: int = 0,
-        fileoutput: Path | None = None,
-        domain: str = '',
-        seed: int | None = None,
-        lang: str = 'pt_BR',
+        **kwargs,
     ):
-        """Init this class."""
+        """Init this class.
+
+        count: int = 0,
+        fileoutput: Path = None,
+        domain: str = '',
+        seed: int = None,
+        lang: str = 'pt_BR',
+        """
         self.fileoutput = (
-            fileoutput or Path(__file__).parent / 'empregados.xlsx'
+            kwargs.get('fileoutput')
+            or Path(__file__).parent / 'empregados.xlsx'
         )
-        self.count = count or 10
-        self.seed = seed
-        self.lang = lang
-        self.fake = Faker(lang)
-        self.domain = domain
+        self.count = kwargs.get('count') or 10
+        self.seed = kwargs.get('seed')
+        self.lang = kwargs.get('lang', 'pt_BR')
+        self.domain = kwargs.get('domain', '')
+        self.fake = Faker(self.lang)
 
     def data_fake(self) -> tuple[str, ...]:
         """Gen data fake for XLSX files."""
         if self.seed:
             self.fake.seed_instance(self.seed)
         domain = self.domain or self.fake.safe_domain_name()
-        name = f'{self.fake.first_name()} {self.fake.last_name()} {self.fake.last_name()}'
+        name = (
+            f'{self.fake.first_name()}'
+            f' {self.fake.last_name()}'
+            f' {self.fake.last_name()}'
+        )
         try:
             cpf = self.fake.cpf()
         except AttributeError:
@@ -55,8 +62,7 @@ class DataFake:
         """Generate dataframe."""
         title = 'nome cpf email'.split()
         users = (self.data_fake() for _ in range(self.count))
-        pd0 = pd.DataFrame(users, columns=title)
-        return pd0
+        return pd.DataFrame(users, columns=title)
 
     def write_xlsx(self) -> bool:
         """Write xlsx file."""

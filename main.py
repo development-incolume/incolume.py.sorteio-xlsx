@@ -1,13 +1,16 @@
+"""Main module."""
+
 import flet as ft
 
 
-def main(page: ft.Page):
-    """GUI para sorteio"""
+def main(page: ft.Page) -> None:
+    """GUI para sorteio."""
     filename = ft.Ref[ft.TextField]()
     amount = ft.Ref[ft.TextField]()
     greetings = ft.Ref[ft.Column]()
 
     def btn_click(e):
+        page = e.page
         if not filename.current.value:
             filename.current.error_text = 'Please enter with Excel Filename'
             page.update()
