@@ -1,4 +1,5 @@
 """Configure switch test."""
+
 import pytest
 
 
