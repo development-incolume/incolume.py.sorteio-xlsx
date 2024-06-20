@@ -21,7 +21,7 @@ def data_fake(*, seed: int | None = None, lang: str = '') -> tuple[str, ...]:
     return (
         (name := f'{fake.first_name()} {fake.last_name()} {fake.last_name()}'),
         fake.cpf(),
-        f'{fake.slug(name)}@example.com',
+        f'{fake.slug(name)}@{fake.safe_domain_name()}',
     )
 
 
@@ -30,8 +30,7 @@ def generate_dataframe(count: int = 0) -> pd.DataFrame:
     count = count or 10
     title = 'nome cpf email'.split()
     users = (data_fake() for _ in range(count))
-    df0 = pd.DataFrame(users, columns=title)
-    return df0
+    return pd.DataFrame(users, columns=title)
 
 
 def write_xlsx(data: pd.DataFrame, filename: Path | None = None) -> bool:
