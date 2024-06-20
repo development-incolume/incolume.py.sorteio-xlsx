@@ -49,6 +49,7 @@ exclude = [
 [tool.poetry.dependencies]
 python = "^3.10"
 flet = "^0.23.0"
+pandas = "^2.2.2"
 
 
 [tool.poetry.group.docs.dependencies]
