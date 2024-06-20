@@ -1,5 +1,6 @@
 """Test sorteio module."""
 
+import sys
 from incolume.py.sorteio_xlsx import sorteio as pkg
 from tempfile import NamedTemporaryFile
 from pathlib import Path
@@ -37,21 +38,23 @@ class TestCase:
     @pytest.mark.parametrize(
         'obj_param entrance expected'.split(),
         [
-            (
+            pytest.param(
                 {'count':50, 'seed':1061, 'lang':'pt_BR', 'fileoutput': ''},
                 {
                     'k': 3,
                     'filename': '',
                 },
                 3,
+                marks=pytest.mark.skipif(sys.platform.startswith('win'), reason='Does not run on windows.'),
             ),
-            (
+            pytest.param(
                 {'count':100, 'seed':1061, 'lang':'pt_BR', 'fileoutput': ''},
                 {
                     'k': 10,
                     'filename': '',
                 },
                 10,
+                marks=pytest.mark.skipif(sys.platform.startswith('win'), reason='Does not run on windows.'),
             ),
         ],
     )
