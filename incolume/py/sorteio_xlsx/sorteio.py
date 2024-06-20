@@ -25,7 +25,7 @@ class DataFake:
         fileoutput: Path | None = None,
         domain: str = '',
         seed: int | None = None,
-        lang: str = '',
+        lang: str = 'pt_BR',
     ):
         """Init this class."""
         self.fileoutput = (
@@ -33,7 +33,7 @@ class DataFake:
         )
         self.count = count or 10
         self.seed = seed
-        self.lang = lang or 'pt_BR'
+        self.lang = lang
         self.fake = Faker(lang)
         self.domain = domain
 
@@ -43,7 +43,11 @@ class DataFake:
             self.fake.seed_instance(self.seed)
         domain = self.domain or self.fake.safe_domain_name()
         name = f'{self.fake.first_name()} {self.fake.last_name()} {self.fake.last_name()}'
-        cpf = self.fake.cpf()
+        try:
+            cpf = self.fake.cpf()
+        except AttributeError:
+            cpf = self.fake.pystr_format(string_format='###.###.###-##')
+
         email = f'{self.fake.slug(name)}@{domain}'
         return name, cpf, email
 
@@ -52,7 +56,6 @@ class DataFake:
         title = 'nome cpf email'.split()
         users = (self.data_fake() for _ in range(self.count))
         pd0 = pd.DataFrame(users, columns=title)
-        print(pd0)
         return pd0
 
     def write_xlsx(self) -> bool:
