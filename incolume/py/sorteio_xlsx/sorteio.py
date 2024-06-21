@@ -81,6 +81,7 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     df0 = ext.get(filename.suffix)(filename)
 
     items = list(df0.index)
+    k = min(k, len(items))
     result = random.sample(items, k=k)
 
     df0.loc[result].to_excel(fout)
