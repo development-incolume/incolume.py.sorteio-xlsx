@@ -2,6 +2,7 @@
 
 import sys
 from incolume.py.sorteio_xlsx import sorteio as pkg
+from incolume.py.sorteio_xlsx.utils import DataFake
 from tempfile import NamedTemporaryFile
 from pathlib import Path
 import pytest
@@ -12,7 +13,7 @@ class TestCase:
 
     def test_0(self):
         """Teste 0."""
-        obj = pkg.DataFake(count=1, seed=1061, lang='pt_BR')
+        obj = DataFake(count=1, seed=1061, lang='pt_BR')
         expected = (
             'Carolina Duarte Cardoso',
             '651.037.248-71',
@@ -31,12 +32,12 @@ class TestCase:
     )
     def test_1(self, entrance, expected):
         """Test 1."""
-        obj = pkg.DataFake(**entrance)
+        obj = DataFake(**entrance)
         assert obj._generate_dataframe().shape == expected  # noqa: SLF001
 
     def test_2(self):
         """Test 2."""
-        obj = pkg.DataFake(
+        obj = DataFake(
             seed=1061,
             fileoutput=Path(NamedTemporaryFile().name),
         )
@@ -82,7 +83,7 @@ class TestCase:
         obj_param.update({'fileoutput': fout})
         entrance.update({'filename': fout})
 
-        obj = pkg.DataFake(**obj_param)
+        obj = DataFake(**obj_param)
         obj.write_xlsx()
         result = pkg.sorteio(**entrance)
         assert pkg.pd.read_excel(result).shape[0] == expected
