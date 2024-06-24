@@ -128,7 +128,7 @@ def main():
                 )
                 sg.popup_notify(result)
                 print(result)
-            except (FileNotFoundError, OSError) as err:
+            except (FileNotFoundError, OSError, ValueError) as err:
                 sg.popup_error(err)
     window.close()
 
