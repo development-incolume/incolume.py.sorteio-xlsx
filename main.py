@@ -1,7 +1,10 @@
 """Main module."""
-
+# -*- coding: utf-8 -*-
 # from incolume.py.sorteio_xlsx.sorteio import sorteio
 from __future__ import annotations
+
+import PySimpleGUI as sg
+
 
 import flet as ft
 from pathlib import Path
@@ -25,8 +28,9 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     """Lotery by xlsx file."""
     filename = filename or Path(__file__).parent / 'empregados.xlsx'
     ext = {'.xlsx': pd.read_excel}
+    timestamp = f'{(ts:=dt.datetime.now(tz=TZ)):-%Y-%m-%d-%H-%M-%S}'
     fout: Path = filename.with_name(
-        f'{filename.stem}{dt.datetime.now(tz=TZ).isoformat()}.xlsx',
+        f'{filename.stem}{timestamp}.xlsx',
     )
     df0 = ext.get(filename.suffix)(filename)
 
@@ -81,7 +85,7 @@ def btn_click(e):
     filename.current.focus()
 
 
-def main(page: ft.Page) -> None:
+def main_flet(page: ft.Page) -> None:
     """GUI para sorteio."""
     page.add(
         ft.TextField(
@@ -95,5 +99,39 @@ def main(page: ft.Page) -> None:
     )
 
 
+layout = [
+    [
+        sg.Text('Arquivo excel:'),
+        sg.Input(key='filename'),
+        sg.FileBrowse(file_types=(('Excel files', '*.xls*'),)),
+    ],
+    [sg.Text('Quantidade:'), sg.Input(key='quantia')],
+    [sg.Exit(), sg.Button('Sortear')],
+]
+window = sg.Window('Sorteio XLSX', layout)
+
+
+def main():
+    """GUI para sorteio."""
+    while 1:
+        event, values = window.read()
+        print(event, values)
+        if event in (sg.WIN_CLOSED, 'Exit'):
+            break
+        if event == 'Sortear':
+            try:
+                result = (
+                    sorteio(
+                        k=int(values['quantia']),
+                        filename=Path(values['filename']),
+                    ),
+                )
+                sg.popup_notify(result)
+                print(result)
+            except (FileNotFoundError, OSError, ValueError) as err:
+                sg.popup_error(err)
+    window.close()
+
+
 if __name__ == '__main__':
-    ft.app(main)
+    main()
