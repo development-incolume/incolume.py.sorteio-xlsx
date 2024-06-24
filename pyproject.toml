@@ -48,10 +48,10 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-flet = "^0.23.0"
 pandas = "^2.2.2"
 openpyxl = "^3.1.4"
 pillow = "^10.3.0"
+pysimplegui = "^5.0.5"
 
 
 [tool.poetry.group.docs.dependencies]
@@ -82,6 +82,7 @@ faker = "^25.8.0"
 pre-commit = "^3.7.1"
 poetry = "^1.8.3"
 pyinstaller = "^6.8.0"
+psgcompiler = "^5.0.0"
 
 [build-system]
 requires = ["poetry-core"]
