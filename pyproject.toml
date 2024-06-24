@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolume.py.sorteio-xlsx"
-version = "0.3.0a4"
+version = "0.3.0a5"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
 license = "MIT"
