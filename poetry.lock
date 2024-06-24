@@ -1728,6 +1728,21 @@ pyyaml = ">=5.1"
 virtualenv = ">=20.10.0"
 
 [[package]]
+name = "psgcompiler"
+version = "5.0.0"
+description = "A simple, easy to use tool that is a front-end to PyInstaller created with PySimpleGUI to convert your Python programs to executables."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "psgcompiler-5.0.0-py3-none-any.whl", hash = "sha256:b6298aafbb6dc3fea3f337961d162af4c25234ed4abc7adf348bc701814dd834"},
+    {file = "psgcompiler-5.0.0.tar.gz", hash = "sha256:a1d2dff4c7b31b899c3e9be3e0e9f4a378a976046bf8e4463cc9caafeaa75236"},
+]
+
+[package.dependencies]
+PyInstaller = "*"
+PySimpleGUI = ">=5"
+
+[[package]]
 name = "psutil"
 version = "5.9.8"
 description = "Cross-platform lib for process and system monitoring in Python."
@@ -2800,4 +2815,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "329dd47e94dc84205f6ef4fcedf1b5a7a941df6acb15f4950e3de14e3915775a"
+content-hash = "866af45f019ff261e3fc647ad0267f95015419acdbacbf46824420b5c1846da7"
