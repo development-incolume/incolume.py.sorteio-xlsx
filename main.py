@@ -1,5 +1,5 @@
 """Main module."""
-
+# -*- coding: utf-8 -*-
 # from incolume.py.sorteio_xlsx.sorteio import sorteio
 from __future__ import annotations
 
