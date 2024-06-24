@@ -2,7 +2,6 @@
 
 # from incolume.py.sorteio_xlsx.sorteio import sorteio
 from __future__ import annotations
-import sys
 
 import PySimpleGUI as sg
 
@@ -29,8 +28,9 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     """Lotery by xlsx file."""
     filename = filename or Path(__file__).parent / 'empregados.xlsx'
     ext = {'.xlsx': pd.read_excel}
+    timestamp = f'{(ts:=dt.datetime.now(tz=TZ)):-%Y-%m-%d-%H-%M-%S}'
     fout: Path = filename.with_name(
-        f'{filename.stem}{dt.datetime.now(tz=TZ):#s}.xlsx' if sys.platform.casefold().startswith('win') else f'{filename.stem}{dt.datetime.now(tz=TZ):%s}.xlsx'
+        f'{filename.stem}{timestamp}.xlsx',
     )
     df0 = ext.get(filename.suffix)(filename)
 
@@ -120,12 +120,14 @@ def main():
             break
         if event == 'Sortear':
             try:
-                sg.popup_notify(
+                result = (
                     sorteio(
                         k=int(values['quantia']),
                         filename=Path(values['filename']),
-                    )
+                    ),
                 )
+                sg.popup_notify(result)
+                print(result)
             except (FileNotFoundError, OSError) as err:
                 sg.popup_error(err)
     window.close()
