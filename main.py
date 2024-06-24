@@ -1,9 +1,10 @@
 """Main module."""
-# -*- coding: utf-8 -*-
-# from incolume.py.sorteio_xlsx.sorteio import sorteio
-from __future__ import annotations
 
-import PySimpleGUI as sg
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+import logging
+
+import PySimpleGUI as sg  # noqa: N813
 
 
 import flet as ft
@@ -28,7 +29,7 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     """Lotery by xlsx file."""
     filename = filename or Path(__file__).parent / 'empregados.xlsx'
     ext = {'.xlsx': pd.read_excel}
-    timestamp = f'{(ts:=dt.datetime.now(tz=TZ)):-%Y-%m-%d-%H-%M-%S}'
+    timestamp = f'{dt.datetime.now(tz=TZ):-%Y-%m-%d-%H-%M-%S}'
     fout: Path = filename.with_name(
         f'{filename.stem}{timestamp}.xlsx',
     )
@@ -115,7 +116,7 @@ def main():
     """GUI para sorteio."""
     while 1:
         event, values = window.read()
-        print(event, values)
+        logging.debug(event, values)
         if event in (sg.WIN_CLOSED, 'Exit'):
             break
         if event == 'Sortear':
@@ -127,7 +128,7 @@ def main():
                     ),
                 )
                 sg.popup_notify(result)
-                print(result)
+                logging.debug(result)
             except (FileNotFoundError, OSError, ValueError) as err:
                 sg.popup_error(err)
     window.close()
