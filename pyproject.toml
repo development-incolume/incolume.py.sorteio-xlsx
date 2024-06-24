@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolume.py.sorteio-xlsx"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
 license = "MIT"
@@ -47,10 +47,11 @@ exclude = [
 
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.13"
 flet = "^0.23.0"
 pandas = "^2.2.2"
 openpyxl = "^3.1.4"
+pillow = "^10.3.0"
 
 
 [tool.poetry.group.docs.dependencies]
@@ -80,6 +81,7 @@ incolume-py-changelog = "^0.8.0"
 faker = "^25.8.0"
 pre-commit = "^3.7.1"
 poetry = "^1.8.3"
+pyinstaller = "^6.8.0"
 
 [build-system]
 requires = ["poetry-core"]

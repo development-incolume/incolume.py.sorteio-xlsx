@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/hoyjc2o3dyafxmfw?svg=true)](https://ci.appveyor.com/project/britodfbr/incolume-py-sorteio-xlsx)
+
+
 # incolume.py.sorteio-xlsx
 
 ---
