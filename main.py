@@ -60,9 +60,9 @@ def btn_click(e):
     # )
     dlg = ft.AlertDialog(
         modal=True,
-        title=ft.Text('Sorteados'),
+        title=ft.Text('Sorteados:'),
         content=[ft.Text(f'{result}')],
-        on_dismiss=lambda _: page.add(''),
+        on_dismiss=lambda _: logging.debug('dlg dismissed.'),
     )
     filename.current.value = ''
     amount.current.value = ''
