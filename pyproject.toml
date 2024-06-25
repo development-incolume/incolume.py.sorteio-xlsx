@@ -61,8 +61,10 @@ python = ">=3.10,<3.13"
 pandas = "^2.2.2"
 openpyxl = "^3.1.4"
 pillow = "^10.3.0"
-pysimplegui = "^5.0.5"
-flet = "^0.23.1"
+pysimplegui = {version="^5.0.5", optional=true}
+flet = {version="^0.23.1", optional=true}
+
+[tool.poetry.extras]
 
 
 [tool.poetry.group.docs.dependencies]
