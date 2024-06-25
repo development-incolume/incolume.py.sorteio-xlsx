@@ -53,10 +53,12 @@ class TestCase:
                     'filename': '',
                 },
                 3,
-                marks=pytest.mark.skipif(
-                    sys.platform.startswith('win'),
-                    reason='Does not run on windows.',
-                ),
+                marks=[
+                    # pytest.mark.skipif(
+                    #     sys.platform.startswith('win'),
+                    #     reason='Does not run on windows.',
+                    # ),
+                ],
             ),
             pytest.param(
                 {
@@ -70,10 +72,12 @@ class TestCase:
                     'filename': '',
                 },
                 10,
-                marks=pytest.mark.skipif(
-                    sys.platform.startswith('win'),
-                    reason='Does not run on windows.',
-                ),
+                marks=[
+                    # pytest.mark.skipif(
+                    #     sys.platform.startswith('win'),
+                    #     reason='Does not run on windows.',
+                    # ),
+                ],
             ),
         ],
     )
