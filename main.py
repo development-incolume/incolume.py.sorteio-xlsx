@@ -53,19 +53,31 @@ def btn_click(e):
         filename=Path(filename.current.value),
     )
 
-    greetings.current.controls.append(
-        ft.Text(
-            f'Sorteados em: {result}!',
-        ),
+    # greetings.current.controls.append(
+    #     ft.Text(
+    #         f'Sorteados em: {result}!',
+    #     ),
+    # )
+    dlg = ft.AlertDialog(
+        modal=True,
+        title=ft.Text('Sorteados'),
+        content=[ft.Text(f'{result}')],
+        on_dismiss=lambda _: page.add(''),
     )
     filename.current.value = ''
     amount.current.value = ''
     page.update()
+    page.open(dlg)
     filename.current.focus()
 
 
 def main_flet(page: ft.Page) -> None:
     """GUI para sorteio."""
+    page.window_center = True
+    page.window.width = 300
+    page.window.height = 250
+    page.window.min_width = 300
+    page.window.min_height = 250
     page.add(
         ft.TextField(
             ref=filename,
@@ -113,4 +125,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    ft.app(main_flet)
