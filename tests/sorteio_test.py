@@ -1,6 +1,5 @@
 """Test sorteio module."""
 
-import sys
 from incolume.py.sorteio_xlsx import sorteio as pkg
 from incolume.py.sorteio_xlsx.utils import DataFake
 from tempfile import NamedTemporaryFile
@@ -53,12 +52,7 @@ class TestCase:
                     'filename': '',
                 },
                 3,
-                marks=[
-                    # pytest.mark.skipif(
-                    #     sys.platform.startswith('win'),
-                    #     reason='Does not run on windows.',
-                    # ),
-                ],
+                marks=[],
             ),
             pytest.param(
                 {
@@ -72,12 +66,7 @@ class TestCase:
                     'filename': '',
                 },
                 10,
-                marks=[
-                    # pytest.mark.skipif(
-                    #     sys.platform.startswith('win'),
-                    #     reason='Does not run on windows.',
-                    # ),
-                ],
+                marks=[],
             ),
         ],
     )

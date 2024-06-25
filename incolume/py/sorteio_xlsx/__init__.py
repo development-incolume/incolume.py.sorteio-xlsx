@@ -17,10 +17,10 @@ try:
             f"{load(file)['tool']['poetry']['version']}\n",
             encoding='utf-8',
         )
+    __version__ = versionfile.read_text(encoding='utf-8').strip()
 except (FileNotFoundError, FileExistsError) as err:
     logging.warning(err)
 
-__version__ = versionfile.read_text(encoding='utf-8').strip()
 
 if __name__ == '__main__':
     logging.debug('%s, %s', configfile, versionfile)
