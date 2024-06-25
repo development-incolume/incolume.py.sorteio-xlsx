@@ -45,6 +45,7 @@ Thumbs.db
 .idea/
 .vscode/
 .buildozer/
+.vs/
 
 # Linux files sistems
 *.sw[op]
