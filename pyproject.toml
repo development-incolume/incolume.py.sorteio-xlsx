@@ -52,6 +52,7 @@ pandas = "^2.2.2"
 openpyxl = "^3.1.4"
 pillow = "^10.3.0"
 pysimplegui = "^5.0.5"
+flet = "^0.23.1"
 
 
 [tool.poetry.group.docs.dependencies]
