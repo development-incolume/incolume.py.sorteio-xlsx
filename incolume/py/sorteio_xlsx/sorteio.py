@@ -18,8 +18,9 @@ def sorteio(k: int = 1, filename: Path | None = None) -> Path:
     """Lotery by xlsx file."""
     filename = filename or Path(__file__).parent / 'empregados.xlsx'
     ext = {'.xlsx': pd.read_excel}
+    timestamp = f'{dt.datetime.now(tz=TZ):-%Y-%m-%d-%H-%M-%S}'
     fout: Path = filename.with_name(
-        f'{filename.stem}{dt.datetime.now(tz=TZ).isoformat()}.xlsx',
+        f'{filename.stem}{timestamp}.xlsx',
     )
     df0 = ext.get(filename.suffix)(filename)
 
