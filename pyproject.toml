@@ -2,9 +2,19 @@
 name = "incolume.py.sorteio-xlsx"
 version = "0.5.0"
 description = ""
-authors = ["britodfbr <britodfbr@gmail.com>"]
+authors = [
+  "britodfbr <brito@incolume.com.br>",
+  ]
+maintainers = [
+  "britodfbr <britodfbr@gmail.com>",
+]
 license = "MIT"
-readme = "README.md"
+readme = [
+  "README.md",
+  "docs/prefacio.md",
+]
+keywords = ["incolume", "sorteio"]
+
 packages = [{include = "incolume"}]
 
 classifiers = [
@@ -37,12 +47,12 @@ exclude = [
   "coverage_report",
 ]
 
+homepage = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
+repository = "https://github.com/development-incolume/incolume.py.sorteio-xlsx.git"
+documentation = "https://incolume-treinamentos.github.io/incolume.py.sorteio-xlsx/"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
-"Documentation" = "https://incolume-treinamentos.github.io/incolume.py.sorteio-xlsx/"
-"Source" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
-"Git" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx.git"
 "Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx/-/issues"
 
 
