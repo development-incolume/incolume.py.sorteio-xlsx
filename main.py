@@ -14,7 +14,7 @@ from pathlib import Path
 import pytz
 from typing import Final
 
-
+TITLE: Final[str] = 'incolume-py-sorteio-xlsx'
 TZ: Final = pytz.timezone('America/Sao_Paulo')
 filename = ft.Ref[ft.TextField]()
 amount = ft.Ref[ft.TextField]()
@@ -59,9 +59,9 @@ def btn_click(e):
     #     ),
     # )
     dlg = ft.AlertDialog(
-        modal=True,
+        # modal=True,
         title=ft.Text('Sorteados:'),
-        content=[ft.Text(f'{result}')],
+        content=ft.Text(f'{result}'),
         on_dismiss=lambda _: logging.debug('dlg dismissed.'),
     )
     filename.current.value = ''
@@ -73,10 +73,11 @@ def btn_click(e):
 
 def main_flet(page: ft.Page) -> None:
     """GUI para sorteio."""
+    page.title = TITLE
     page.window_center = True
-    page.window.width = 300
+    page.window.width = 400
     page.window.height = 250
-    page.window.min_width = 300
+    page.window.min_width = 400
     page.window.min_height = 250
     page.add(
         ft.TextField(
