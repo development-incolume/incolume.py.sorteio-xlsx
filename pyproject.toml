@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolume.py.sorteio-xlsx"
-version = "0.6.0a1"
+version = "0.6.0"
 description = ""
 authors = [
   "britodfbr <brito@incolume.com.br>",
@@ -615,7 +615,7 @@ commands = poetry run task safety
 [tool.taskipy.variables]
 path = "incolume/ tests/"
 CHANGELOGFILE = "docs/about/CHANGELOG.md"
-URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05/compare"
+URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare"
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r {path}', use_vars=true}
