@@ -10,6 +10,11 @@ This file was automatically generated for [incolume.py.changelog](https://github
 ---
 
 
+## [0.7.0]	 &#8212; 	2024-06-27:
+### Changed
+  - Aplicada nova interface com flet;
+  - Novo layout moderno e agradável;
+
 ## [0.6.0]	 &#8212; 	2024-06-27:
 ### Changed
   - Modularizado a interface gráfica para usuários;
@@ -59,3 +64,4 @@ This file was automatically generated for [incolume.py.changelog](https://github
 [0.4.0]: https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare/0.3.0...0.4.0
 [0.5.0]: https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare/0.4.0...0.5.0
 [0.6.0]: https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare/0.5.0...0.6.0
+[0.7.0]: https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare/0.6.0...0.7.0
