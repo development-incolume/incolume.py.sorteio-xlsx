@@ -615,7 +615,7 @@ commands = poetry run task safety
 [tool.taskipy.variables]
 path = "incolume/ tests/"
 CHANGELOGFILE = "docs/about/CHANGELOG.md"
-URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare"
+URLCOMPARE = "https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare"
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r {path}', use_vars=true}
