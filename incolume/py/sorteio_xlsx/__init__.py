@@ -2,11 +2,15 @@
 
 import logging
 from pathlib import Path
+from typing import Final
 
+import pytz
 from tomli import load
 
 __author__ = '@britodfbr'
 __version__ = ''
+TITLE: Final[str] = 'incolume-py-sorteio-xlsx'
+TZ: Final = pytz.timezone('America/Sao_Paulo')
 
 try:
     configfile = Path(__file__).parents[3].joinpath('pyproject.toml')
