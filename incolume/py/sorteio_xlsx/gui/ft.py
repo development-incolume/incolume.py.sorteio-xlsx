@@ -72,12 +72,35 @@ def interface_gui(page: ft.Page) -> None:
     page.window.min_width = 400
     page.window.min_height = 250
     page.add(
-        ft.TextField(
-            ref=filename,
-            label='Arquivo Excel',
-            autofocus=True,
+        ft.ResponsiveRow(
+            controls=[
+                ft.Column(
+                    col=9,
+                    controls=[
+                        ft.TextField(
+                            ref=filename,
+                            label='Arquivo Excel',
+                            autofocus=True,
+                        ),
+                    ],
+                ),
+                ft.Column(
+                    col=3,
+                    controls=[
+                        ft.TextButton(
+                            text='Arquivos',
+                            on_click=lambda _: print('ran this...'),
+                        ),
+                    ],
+                ),
+            ],
         ),
-        ft.TextField(ref=amount, label='Quantidade'),
+        ft.ResponsiveRow(
+            col=12,
+            controls=[
+                ft.TextField(ref=amount, label='Quantidade'),
+            ],
+        ),
         ft.ElevatedButton('Sortear', on_click=btn_click),
         ft.Column(ref=greetings),
     )
