@@ -1,10 +1,20 @@
 [tool.poetry]
 name = "incolume.py.sorteio-xlsx"
-version = "0.5.0"
+version = "0.6.0"
 description = ""
-authors = ["britodfbr <britodfbr@gmail.com>"]
+authors = [
+  "britodfbr <brito@incolume.com.br>",
+  ]
+maintainers = [
+  "britodfbr <britodfbr@gmail.com>",
+]
 license = "MIT"
-readme = "README.md"
+readme = [
+  "README.md",
+  "docs/prefacio.md",
+]
+keywords = ["incolume", "sorteio"]
+
 packages = [{include = "incolume"}]
 
 classifiers = [
@@ -37,12 +47,12 @@ exclude = [
   "coverage_report",
 ]
 
+homepage = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
+repository = "https://github.com/development-incolume/incolume.py.sorteio-xlsx.git"
+documentation = "https://incolume-treinamentos.github.io/incolume.py.sorteio-xlsx/"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
-"Documentation" = "https://incolume-treinamentos.github.io/incolume.py.sorteio-xlsx/"
-"Source" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx"
-"Git" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx.git"
 "Tracker" = "https://github.com/development-incolume/incolume.py.sorteio-xlsx/-/issues"
 
 
@@ -50,8 +60,14 @@ exclude = [
 python = ">=3.10,<3.13"
 pandas = "^2.2.2"
 openpyxl = "^3.1.4"
-pillow = "^10.3.0"
-pysimplegui = "^5.0.5"
+pillow = {version="^10.3.0", optional=true}
+pysimplegui = {version="^5.0.5", optional=true}
+flet = {version="^0.23.1", optional=true}
+
+[tool.poetry.extras]
+flet = ["flet", "pillow"]
+pysimplegui = ["pysimplegui", "pillow"]
+all = ["flet", "pillow"]
 
 
 [tool.poetry.group.docs.dependencies]
@@ -599,7 +615,7 @@ commands = poetry run task safety
 [tool.taskipy.variables]
 path = "incolume/ tests/"
 CHANGELOGFILE = "docs/about/CHANGELOG.md"
-URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.model-2023-07-05/compare"
+URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare"
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r {path}', use_vars=true}

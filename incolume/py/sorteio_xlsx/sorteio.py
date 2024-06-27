@@ -7,11 +7,7 @@ import random
 from pathlib import Path
 
 import pandas as pd
-import pytz
-from typing import Final
-
-
-TZ: Final = pytz.timezone('America/Sao_Paulo')
+from incolume.py.sorteio_xlsx import TZ
 
 
 def sorteio(k: int = 1, filename: Path | None = None) -> Path:
