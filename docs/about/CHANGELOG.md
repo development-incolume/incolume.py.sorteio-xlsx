@@ -10,6 +10,10 @@ This file was automatically generated for [incolume.py.changelog](https://github
 ---
 
 
+## [0.8.0]	 &#8212; 	2024-06-28:
+### Changed
+  - Acrescentado botão para seleção de arquivo via Sistema Operacional;
+
 ## [0.7.0]	 &#8212; 	2024-06-27:
 ### Changed
   - Aplicada nova interface com flet;
@@ -65,3 +69,4 @@ This file was automatically generated for [incolume.py.changelog](https://github
 [0.5.0]: https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare/0.4.0...0.5.0
 [0.6.0]: https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare/0.5.0...0.6.0
 [0.7.0]: https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare/0.6.0...0.7.0
+[0.8.0]: https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare/0.7.0...0.8.0
