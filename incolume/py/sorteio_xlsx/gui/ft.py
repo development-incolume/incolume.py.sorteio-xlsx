@@ -1,5 +1,5 @@
 """Flet interface module."""
-# ruff: noqa: ERA001
+# ruff: noqa: ERA001 T201
 
 from __future__ import annotations
 import logging
@@ -11,6 +11,15 @@ from incolume.py.sorteio_xlsx import TITLE
 filename = ft.Ref[ft.TextField]()
 amount = ft.Ref[ft.TextField]()
 greetings = ft.Ref[ft.Column]()
+filepicker = ft.FilePicker()
+
+
+def picker_file(e: ft.ControlEvent) -> None:
+    """Get filename."""
+    if not e.files:
+        return
+    filename.current.value = e.files[0].path
+    e.page.update()
 
 
 def btn_click(e):
@@ -67,17 +76,53 @@ def interface_gui(page: ft.Page) -> None:
     """GUI para sorteio."""
     page.title = TITLE
     page.window_center = True
-    page.window.width = 400
+    page.window.width = 600
     page.window.height = 250
-    page.window.min_width = 400
+    page.window.min_width = 600
     page.window.min_height = 250
+
+    pick_files_dialog = ft.FilePicker(
+        on_result=picker_file,
+    )
+
+    page.overlay.append(pick_files_dialog)
+
     page.add(
-        ft.TextField(
-            ref=filename,
-            label='Arquivo Excel',
-            autofocus=True,
+        ft.ResponsiveRow(
+            alignment=ft.alignment.center,
+            controls=[
+                ft.Column(
+                    col=9,
+                    controls=[
+                        ft.TextField(
+                            ref=filename,
+                            label='Arquivo Excel',
+                            autofocus=True,
+                        ),
+                    ],
+                ),
+                ft.Column(
+                    col=3,
+                    controls=[
+                        ft.ElevatedButton(
+                            'Arquivos',
+                            icon=ft.icons.UPLOAD_FILE,
+                            on_click=lambda _: pick_files_dialog.pick_files(
+                                allow_multiple=False,
+                                file_type=ft.FilePickerFileType.CUSTOM,
+                                allowed_extensions=['xlsx', 'xls', 'odt'],
+                            ),
+                        ),
+                    ],
+                ),
+            ],
         ),
-        ft.TextField(ref=amount, label='Quantidade'),
+        ft.ResponsiveRow(
+            col=12,
+            controls=[
+                ft.TextField(ref=amount, label='Quantidade'),
+            ],
+        ),
         ft.ElevatedButton('Sortear', on_click=btn_click),
         ft.Column(ref=greetings),
     )
