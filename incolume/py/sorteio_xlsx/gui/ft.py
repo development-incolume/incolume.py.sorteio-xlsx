@@ -14,6 +14,14 @@ greetings = ft.Ref[ft.Column]()
 filepicker = ft.FilePicker()
 
 
+def picker_file(e: ft.ControlEvent) -> None:
+    """Get filename."""
+    if not e.files:
+        return
+    filename.current.value = e.files[0].path
+    e.page.update()
+
+
 def btn_click(e):
     """Event to click button."""
     page = e.page
@@ -72,6 +80,13 @@ def interface_gui(page: ft.Page) -> None:
     page.window.height = 250
     page.window.min_width = 400
     page.window.min_height = 250
+
+    pick_files_dialog = ft.FilePicker(
+        on_result=picker_file,
+    )
+
+    page.overlay.append(pick_files_dialog)
+
     page.add(
         ft.ResponsiveRow(
             alignment=ft.alignment.center,
@@ -89,13 +104,13 @@ def interface_gui(page: ft.Page) -> None:
                 ft.Column(
                     col=3,
                     controls=[
-                        ft.TextButton(
-                            text='Arquivos',
-                            on_click=lambda _: filepicker.pick_files(
-                                dialog_title='Choose the subtitle',
-                                file_type=ft.FilePickerFileType.CUSTOM,
-                                allowed_extensions=['xlsx'],
+                        ft.ElevatedButton(
+                            'Arquivos',
+                            icon=ft.icons.UPLOAD_FILE,
+                            on_click=lambda _: pick_files_dialog.pick_files(
                                 allow_multiple=False,
+                                file_type=ft.FilePickerFileType.CUSTOM,
+                                allowed_extensions=['xlsx', 'xls', 'odt'],
                             ),
                         ),
                     ],
