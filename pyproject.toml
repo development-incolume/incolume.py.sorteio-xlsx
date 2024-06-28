@@ -63,6 +63,9 @@ openpyxl = "^3.1.4"
 pillow = {version="^10.3.0", optional=true}
 pysimplegui = {version="^5.0.5", optional=true}
 flet = {version="^0.23.1", optional=true}
+zenity = [
+  {version="^2.0.0", platform="linux"},
+]
 
 [tool.poetry.extras]
 flet = ["flet", "pillow"]
@@ -615,7 +618,7 @@ commands = poetry run task safety
 [tool.taskipy.variables]
 path = "incolume/ tests/"
 CHANGELOGFILE = "docs/about/CHANGELOG.md"
-URLCOMPARE = "https://github.com/incolume-treinamentos/incolume.py.sorteio-xlsx/compare"
+URLCOMPARE = "https://github.com/development-incolume/incolume.py.sorteio-xlsx/compare"
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r {path}', use_vars=true}

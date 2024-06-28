@@ -1,5 +1,5 @@
 """Flet interface module."""
-# ruff: noqa: ERA001
+# ruff: noqa: ERA001 T201
 
 from __future__ import annotations
 import logging
@@ -11,6 +11,7 @@ from incolume.py.sorteio_xlsx import TITLE
 filename = ft.Ref[ft.TextField]()
 amount = ft.Ref[ft.TextField]()
 greetings = ft.Ref[ft.Column]()
+filepicker = ft.FilePicker()
 
 
 def btn_click(e):
@@ -72,12 +73,41 @@ def interface_gui(page: ft.Page) -> None:
     page.window.min_width = 400
     page.window.min_height = 250
     page.add(
-        ft.TextField(
-            ref=filename,
-            label='Arquivo Excel',
-            autofocus=True,
+        ft.ResponsiveRow(
+            alignment=ft.alignment.center,
+            controls=[
+                ft.Column(
+                    col=9,
+                    controls=[
+                        ft.TextField(
+                            ref=filename,
+                            label='Arquivo Excel',
+                            autofocus=True,
+                        ),
+                    ],
+                ),
+                ft.Column(
+                    col=3,
+                    controls=[
+                        ft.TextButton(
+                            text='Arquivos',
+                            on_click=lambda _: filepicker.pick_files(
+                                dialog_title='Choose the subtitle',
+                                file_type=ft.FilePickerFileType.CUSTOM,
+                                allowed_extensions=['xlsx'],
+                                allow_multiple=False,
+                            ),
+                        ),
+                    ],
+                ),
+            ],
         ),
-        ft.TextField(ref=amount, label='Quantidade'),
+        ft.ResponsiveRow(
+            col=12,
+            controls=[
+                ft.TextField(ref=amount, label='Quantidade'),
+            ],
+        ),
         ft.ElevatedButton('Sortear', on_click=btn_click),
         ft.Column(ref=greetings),
     )
