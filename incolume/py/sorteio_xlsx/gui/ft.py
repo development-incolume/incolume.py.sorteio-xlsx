@@ -76,9 +76,9 @@ def interface_gui(page: ft.Page) -> None:
     """GUI para sorteio."""
     page.title = TITLE
     page.window_center = True
-    page.window.width = 400
+    page.window.width = 600
     page.window.height = 250
-    page.window.min_width = 400
+    page.window.min_width = 600
     page.window.min_height = 250
 
     pick_files_dialog = ft.FilePicker(
